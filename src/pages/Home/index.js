@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import api from "../../Services/api";
+
 import { Container, Content, LinkStyle } from "./styles";
 
 import { FaArrowRight } from "react-icons/fa";
@@ -12,8 +13,6 @@ function Home() {
   const [dataBrazil, setDataBrazil] = useState([]);
   const [dataBrazilSearch, setDataSearch] = useState([]);
   const [contrySearch, setContrySearch] = useState("");
-
-  async function showData() {}
 
   function callApi(response) {
     const {
@@ -90,7 +89,12 @@ function Home() {
           <Cart data={dataBrazilSearch ? dataBrazilSearch : null} />
         </div>
 
-        <LinkStyle onClick={showData}>
+        <LinkStyle
+          to={{
+            pathname: "/charts",
+            data: dataBrazil,
+          }}
+        >
           <span>Gráficos</span>
           <FaArrowRight color="#4e73df" size={18} />
         </LinkStyle>

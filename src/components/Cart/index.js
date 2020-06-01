@@ -5,15 +5,10 @@ import { Container, CartStyle } from "./styles";
 import { formatNumber } from "../../util/format";
 
 function Cart({ data }) {
-  // useEffect(() => {
-  //   format();
-  // }, [data]);
-
   function format() {
     // console.log(data);
     try {
       if (data !== []) {
-        console.log(data);
         data = {
           cases: formatNumber(data.cases),
           todayCases: formatNumber(data.todayCases),
