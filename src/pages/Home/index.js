@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import api from "../../Services/api";
 
 import { Container, Content, LinkStyle } from "./styles";
@@ -14,60 +14,31 @@ function Home() {
   const [dataBrazilSearch, setDataSearch] = useState([]);
   const [contrySearch, setContrySearch] = useState("");
 
-  function callApi(response) {
-    const {
-      cases,
-      casesPerOneMillion,
-      todayCases,
-      deaths,
-      todayDeaths,
-      deathsPerOneMillion,
-      recovered,
-      recoveredPerOneMillion,
-    } = response;
-
-    const data = {
-      cases,
-      casesPerOneMillion,
-      todayCases,
-      deaths,
-      todayDeaths,
-      deathsPerOneMillion,
-      recovered,
-      recoveredPerOneMillion,
-    };
-    // console.log(data);
-    return data;
-  }
-
   useEffect(() => {
     async function loadDataBrazil() {
-      const response = await api.get("/v2/countries/BRAZIL");
-      const data = callApi(response.data);
-      setDataBrazil(data);
+      await api.get("/v2/countries/BRAZIL").then(response => {
+        setDataBrazil(response.data);
+      });
     }
 
     async function loadDataGlobal() {
-      const response = await api.get("/v2/all");
-      const data = callApi(response.data);
-      console.log(data);
-
-      setDataGlobal(data);
+      await api.get("/v2/all").then(response => {
+        setDataGlobal(response.data);
+      });
     }
 
     loadDataBrazil();
     loadDataGlobal();
   }, []);
 
-  async function loadDataSearch(url) {
+  const loadDataSearch = useCallback(async (url) => {
     if (url) {
-      const response = await api.get(`/v2/countries/${url}`);
-      const data = callApi(response.data);
-
-      setDataSearch(data);
-      setContrySearch(url);
+      await api.get(`/v2/countries/${url}`).then(response => {
+        setDataSearch(response.data);
+        setContrySearch(url);
+      });
     }
-  }
+  }, [])
 
   return (
     <Container>
