@@ -8,7 +8,7 @@
 Estatisticas em tempo real
 <br>
 
-Consumo da API: [NovelCOVID](COVIDhttps://github.com/NovelCOVID/API)
+Consumo da API: [NovelCOVID](https://github.com/NovelCOVID/API)
 
 </h3>
 </h1>
