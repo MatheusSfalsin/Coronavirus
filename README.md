@@ -47,7 +47,7 @@ Consumo da API: [NovelCOVID](https://github.com/NovelCOVID/API)
   ## ⚙ Inicialização
 
   Instalar as dependências:
-
   > yarn
-  > Iniciar a aplicação:
+  
+  Iniciar a aplicação:
   > yarn start
