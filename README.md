@@ -42,6 +42,7 @@ Consumo da API: [NovelCOVID](https://github.com/NovelCOVID/API)
   - [x] Javascript
   - [x] ReactJS
   - [x] Styled-components
+  - [x] react-chartjs-2
   - [x] Axios
 
   ## ⚙ Inicialização
