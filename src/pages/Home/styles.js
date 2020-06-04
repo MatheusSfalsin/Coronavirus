@@ -12,19 +12,29 @@ export const Content = styled.div`
     margin-bottom: 50px;
   }
 
-  h2 {
-    color: #848484;
+  header {
+    display: flex;
+    justify-content: space-between;
     margin-bottom: 30px;
     margin-top: 20px;
+    align-items: center;
+  }
+
+  h2 {
+    color: #848484;
     padding-left: 20px;
+  }
+
+  h1 {
+    color: #848484;
+    padding-left: 20px;
+    margin-bottom: 30px;
+    margin-top: 20px;
   }
 `;
 
 export const LinkStyle = styled(Link)`
-  position: absolute;
   padding: 10px;
-  top: 80px;
-  right: 60px;
   height: 40px;
   width: 140px;
   background: transparent;

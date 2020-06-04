@@ -16,13 +16,13 @@ function Home() {
 
   useEffect(() => {
     async function loadDataBrazil() {
-      await api.get("/v2/countries/BRAZIL").then(response => {
+      await api.get("/v2/countries/BRAZIL").then((response) => {
         setDataBrazil(response.data);
       });
     }
 
     async function loadDataGlobal() {
-      await api.get("/v2/all").then(response => {
+      await api.get("/v2/all").then((response) => {
         setDataGlobal(response.data);
       });
     }
@@ -33,42 +33,49 @@ function Home() {
 
   const loadDataSearch = useCallback(async (url) => {
     if (url) {
-      await api.get(`/v2/countries/${url}`).then(response => {
+      await api.get(`/v2/countries/${url}`).then((response) => {
         setDataSearch(response.data);
         setContrySearch(url);
       });
     }
-  }, [])
+  }, []);
 
   return (
     <Container>
       <Content>
         <div>
-          <h2>Brasil</h2>
+          <header>
+            <h2>Brasil</h2>
+            <LinkStyle
+              to={{
+                pathname: "/charts",
+                data: dataBrazil,
+              }}
+            >
+              <span>Gráficos</span>
+              <FaArrowRight color="#4e73df" size={18} />
+            </LinkStyle>
+          </header>
+
           <Cart data={dataBrazil} />
         </div>
 
         <div>
-          <h2>Mundo</h2>
+          <header>
+            <h2>Mundo</h2>
+          </header>
+
           <Cart data={dataGlobal} />
         </div>
 
         <div>
-          <h2>Pesquise um país</h2>
+          <header>
+            <h2>Pesquise um país</h2>
+          </header>
           <Search searchCountries={loadDataSearch} />
-          <h2>{contrySearch ? contrySearch : "---"}</h2>
+          <h1>{contrySearch ? contrySearch : "---"}</h1>
           <Cart data={dataBrazilSearch ? dataBrazilSearch : null} />
         </div>
-
-        <LinkStyle
-          to={{
-            pathname: "/charts",
-            data: dataBrazil,
-          }}
-        >
-          <span>Gráficos</span>
-          <FaArrowRight color="#4e73df" size={18} />
-        </LinkStyle>
       </Content>
     </Container>
   );

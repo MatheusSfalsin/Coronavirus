@@ -8,7 +8,8 @@ function Cart({ data }) {
   function format() {
     // console.log(data);
     try {
-      if (data !== []) {
+      if (data.length !== 0) {
+        console.log(data);
         data = {
           cases: formatNumber(data.cases),
           todayCases: formatNumber(data.todayCases),
@@ -19,6 +20,8 @@ function Cart({ data }) {
           todayDeaths: formatNumber(data.todayDeaths),
           deathsPerOneMillion: formatNumber(data.deathsPerOneMillion),
         };
+      } else {
+        data = undefined;
       }
     } catch (error) {}
   }

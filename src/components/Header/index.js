@@ -7,7 +7,7 @@ function Header() {
     <Container>
       <Content>
         <nav>
-          <span>CORONAVIRUS</span>
+          <span>CORONAVÍRUS</span>
           <p>Estatística</p>
         </nav>
       </Content>
